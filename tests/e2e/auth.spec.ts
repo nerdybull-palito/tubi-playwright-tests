@@ -1,5 +1,6 @@
 import { test, expect } from '../../fixtures/pages';
-import { TEST_CREDENTIALS, generateTestEmail } from '../../utils/testData';
+// uncomment below import when using Credentials to login
+//import { TEST_CREDENTIALS, generateTestEmail } from '../../utils/testData';
 
 test.describe('Authentication', () => {
 
@@ -14,6 +15,8 @@ test.describe('Authentication', () => {
     await authPage.assertLoginFormVisible();
   });
 
+  /* Removing test because I am not login in at the moment
+
   test('should show error for invalid credentials @smoke', async ({ authPage }) => {
     await authPage.login(
       TEST_CREDENTIALS.invalidUser.email,
@@ -21,12 +24,15 @@ test.describe('Authentication', () => {
     );
     await authPage.assertLoginError();
   });
+  */
 
   // ─── Field Validation @regression ────────────────────────────────────────
 
   test('should validate email format @regression', async ({ authPage }) => {
     await authPage.assertEmailInputValidation();
   });
+
+  /* Removing this test because I am not currently using Credentials to login
 
   test('should require password field @regression', async ({ authPage }) => {
     await authPage.emailInput.waitFor({ state: 'visible' });
@@ -37,6 +43,20 @@ test.describe('Authentication', () => {
     const errorVisible = await authPage.loginErrorMessage.isVisible().catch(() => false);
     const currentURL = authPage.page.url();
     // If no error shown, at minimum we should still be on the login page/modal
+    expect(
+      errorVisible || currentURL.includes('login') || currentURL.includes('tubitv.com'),
+      'Submitting without password should not proceed to dashboard'
+    ).toBeTruthy();
+  });
+  */
+
+  // Remove this test when using login info
+  test('should require password field @regression', async ({ authPage }) => {
+    await authPage.emailInput.waitFor({ state: 'visible' });
+    await authPage.fillInput(authPage.emailInput, 'anyone@example.com');
+    await authPage.loginSubmitButton.click();
+    const errorVisible = await authPage.loginErrorMessage.isVisible().catch(() => false);
+    const currentURL = authPage.page.url();
     expect(
       errorVisible || currentURL.includes('login') || currentURL.includes('tubitv.com'),
       'Submitting without password should not proceed to dashboard'
@@ -98,6 +118,7 @@ test.describe('Authentication', () => {
 
   // ─── Security @regression ─────────────────────────────────────────────────
 
+  /* Removing this test because I am not currently using Credentials to login
   test('should not expose password in page source @regression', async ({ authPage, page }) => {
     await authPage.emailInput.waitFor({ state: 'visible' });
     await authPage.fillInput(authPage.emailInput, TEST_CREDENTIALS.validUser.email);
@@ -108,6 +129,7 @@ test.describe('Authentication', () => {
       TEST_CREDENTIALS.validUser.password
     );
   });
+  */
 
   test('should use HTTPS for form submission @regression', async ({ page }) => {
     const currentURL = page.url();

@@ -25,6 +25,7 @@ export const SEARCH_QUERIES = {
   emoji: '🎬',
 } as const;
 
+/* Uncomment this when using Credentials to login
 export const TEST_CREDENTIALS = {
   // Use env vars in CI — these are placeholders
   validUser: {
@@ -40,6 +41,7 @@ export const TEST_CREDENTIALS = {
     password: 'anypassword',
   },
 } as const;
+*/
 
 export const CONTENT_CATEGORIES = [
   'action-movies',
