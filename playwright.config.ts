@@ -42,6 +42,7 @@ export default defineConfig({
     trace: CI ? 'on-first-retry' : 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: CI ? 'retain-on-failure' : 'off',
+    // storageState: '.auth/user.json', // uncomment this line when using Credentials
     actionTimeout: 15_000,
     navigationTimeout: 30_000,
     ignoreHTTPSErrors: false,
@@ -57,46 +58,48 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     // ─── Setup ────────────────────────────────────────────────────────────────
-    {
+    // Uncomment Setup project and dependencies: ['setup'], when using Credentials again
+    /*{
       name: 'setup',
       testMatch: /.*\.setup\.ts/,
-    },
+    }, */
  
     // ─── Desktop Browsers ─────────────────────────────────────────────────────
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-      dependencies: ['setup'],
+      //dependencies: ['setup'],
     },
-    {
+/*   {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
-      dependencies: ['setup'],
+      //dependencies: ['setup'],
     },
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-      dependencies: ['setup'],
+      //dependencies: ['setup'],
     },
  
     // ─── Mobile Devices ───────────────────────────────────────────────────────
     {
       name: 'mobile-chrome',
       use: { ...devices['Pixel 7'] },
-      dependencies: ['setup'],
+      //dependencies: ['setup'],
     },
     {
       name: 'mobile-safari',
       use: { ...devices['iPhone 14'] },
-      dependencies: ['setup'],
+      //dependencies: ['setup'],
     },
- 
+
     // ─── Smoke Suite (CI fast lane) ───────────────────────────────────────────
     {
       name: 'smoke',
       grep: /@smoke/,
       use: { ...devices['Desktop Chrome'] },
     },
+    */
   ],
 
   outputDir: 'test-results',

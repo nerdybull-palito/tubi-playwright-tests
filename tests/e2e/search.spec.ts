@@ -5,7 +5,7 @@ test.describe('Search Functionality', () => {
 
   // ─── Core Search @smoke ──────────────────────────────────────────────────
 
-  test('should navigate to search page @smoke', async ({ searchPage, page }) => {
+  test('TC-SRCH-001 | should navigate to search page @smoke', async ({ searchPage, page }) => {
     await page.goto('/search');
     await searchPage.assertVisible(searchPage.searchInput, 'Search input should be present');
   });
