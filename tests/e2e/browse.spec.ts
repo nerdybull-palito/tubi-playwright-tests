@@ -5,14 +5,14 @@ test.describe('Browse & Categories', () => {
 
   // ─── Smoke ────────────────────────────────────────────────────────────────
 
-  test('should load categories page @smoke', async ({ browsePage }) => {
+  test('TC-BRW-001 | should load categories page @smoke', async ({ browsePage }) => {
     await browsePage.goto('/categories');
     await browsePage.assertCategoryLinksPresent();
   });
 
   // ─── Genre Navigation @regression ─────────────────────────────────────────
 
-  test('should navigate to a specific genre @regression', async ({ browsePage }) => {
+  test('TC-BRW-002 | should navigate to a specific genre @regression', async ({ browsePage }) => {
     const genre = CONTENT_CATEGORIES[0]; // action-movies
     await browsePage.navigateToCategory(genre);
     await browsePage.assertCategoryPageLoaded();

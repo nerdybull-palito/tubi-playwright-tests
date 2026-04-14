@@ -17,7 +17,7 @@ export class BrowsePage extends BasePage {
     super(page, '/categories');
 
     this.categoryNavigation = page.locator('[class*="category-nav"], [data-testid*="category-nav"], nav').first();
-    this.categoryLinks      = page.locator('a[href*="/category/"], a[href*="/genre/"]');
+    this.categoryLinks      = page.locator('a[href*="/category/"], a[href*="/genre/"], a[href="/movies"], a[href="/tv-shows"], a[href="/live"]');
     this.contentGrid        = page.locator('[class*="grid"], [class*="Grid"], [data-testid*="content-grid"]').first();
     this.contentCards       = page.locator('[class*="card"], [class*="tile"], [data-testid*="content-card"]');
     this.filterBar          = page.locator('[class*="filter"], [data-testid*="filter"]').first();
