@@ -25,12 +25,13 @@ export class HomePage extends BasePage {
     this.logo           = page.locator('[aria-label*="Tubi"], a[href="/"]').first();
     this.searchIcon     = page.locator('[aria-label*="search" i], [data-testid*="search"]').first();
     this.searchInput    = page.locator('input[type="search"], input[placeholder*="search" i]').first();
-    this.loginButton    = page.locator('text=Log In, [data-testid="login-btn"]').first();
-    this.signUpButton   = page.locator('text=Sign Up, [data-testid="signup-btn"]').first();
+    this.loginButton    = page.locator('text=Log In, [data-testid="login"]').first();
+    this.signUpButton   = page.locator('text=Sign Up, [data-testid="signup"]').first();
     this.heroSection    = page.locator('[class*="hero"], [data-testid*="hero"], .featured-hero').first();
     this.featuredCarousel = page.locator('[class*="carousel"], [class*="slider"], [data-testid*="carousel"]').first();
     this.categoryRows   = page.locator('[class*="row"], [data-testid*="content-row"]');
-    this.movieCards     = page.locator('[class*="card"], [data-testid*="card"], [class*="tile"]');
+    // this.movieCards     = page.locator('[class*="card"], [data-testid*="card"], [class*="tile"]');
+    this.movieCards     = page.locator('[class*="web-content-tile"]');
     this.contentRow     = page.locator('[class*="container-row"], [class*="ContentRow"]').first();
     this.footerLinks    = page.locator('footer a');
     this.browseMenu     = page.locator('[aria-label*="browse" i], [data-testid*="browse"]').first();
@@ -70,6 +71,7 @@ export class HomePage extends BasePage {
 
   async clickFirstMovieCard(): Promise<void> {
     const firstCard = this.movieCards.first();
+    console.log(firstCard);
     await firstCard.waitFor({ state: 'visible' });
     await firstCard.click();
   }
