@@ -5,12 +5,12 @@ test.describe('Search Functionality', () => {
 
   // ─── Core Search @smoke ──────────────────────────────────────────────────
 
-  test('TC-SRCH-001 | should navigate to search page @smoke', async ({ searchPage, page }) => {
+  test('TC-SRCH-001 | Should navigate to search page @smoke', async ({ searchPage, page }) => {
     await page.goto('/search');
     await searchPage.assertVisible(searchPage.searchInput, 'Search input should be present');
   });
 
-  test('should return results for a valid query @smoke', async ({ searchPage }) => {
+  test('TC-SRCH-002 | Should return results for a valid query @smoke', async ({ searchPage }) => {
     await searchPage.searchFor(SEARCH_QUERIES.popular);
     await searchPage.assertSearchResultsVisible();
   });

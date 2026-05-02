@@ -30,8 +30,8 @@ export class HomePage extends BasePage {
     this.heroSection    = page.locator('[class*="hero"], [data-testid*="hero"], .featured-hero').first();
     this.featuredCarousel = page.locator('[class*="carousel"], [class*="slider"], [data-testid*="carousel"]').first();
     this.categoryRows   = page.locator('[class*="row"], [data-testid*="content-row"]');
-    // this.movieCards     = page.locator('[class*="card"], [data-testid*="card"], [class*="tile"]');
-    this.movieCards     = page.locator('[class*="web-content-tile"]');
+    this.movieCards     = page.locator('[class*="card"], [data-testid*="card"], [class*="tile"]');
+    // this.movieCards     = page.locator('[class*="web-content-tile"]');
     this.contentRow     = page.locator('[class*="container-row"], [class*="ContentRow"]').first();
     this.footerLinks    = page.locator('footer a');
     this.browseMenu     = page.locator('[aria-label*="browse" i], [data-testid*="browse"]').first();
